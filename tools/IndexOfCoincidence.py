@@ -7,6 +7,8 @@ def index_coincidence(text):
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
     ic = 0.0
     n = len(text)
+    if n == 0 or n == 1:
+        return 0
     for letter in alphabet:
         fi = 0
         for char in text:
@@ -17,8 +19,9 @@ def index_coincidence(text):
 
     return ic
 
-if len(sys.argv) != 2:
-    print 'error executing IndexOfCoincidence.py\nusage: python IndexOfCoincidence.py [text]'
-    sys.exit(0)
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print 'error executing IndexOfCoincidence.py\nusage: python IndexOfCoincidence.py [text]'
+        sys.exit(0)
 
-print index_coincidence(sys.argv[1].lower())
+    print index_coincidence(sys.argv[1].lower())

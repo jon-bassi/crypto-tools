@@ -28,11 +28,12 @@ def decrypt(text, key):
         decrypted += alphabet[shiftamt]
     return decrypted
 
-if len(sys.argv) < 3 or len(sys.argv) > 4:
-    print 'error executing Vignere.py\nusage: python Vignere.py [text] [key] ["decrypt" (optional)]'
-    sys.exit(0)
+if __name__ == "__main__":
+    if len(sys.argv) < 3 or len(sys.argv) > 4:
+        print 'error executing Vignere.py\nusage: python Vignere.py [text] [key] ["decrypt" (optional)]'
+        sys.exit(0)
 
-if len(sys.argv) < 4:
-    print encrypt(sys.argv[1].lower(), sys.argv[2].lower())
-else:
-    print decrypt(sys.argv[1].lower(), sys.argv[2].lower())
+    if len(sys.argv) < 4:
+        print encrypt(sys.argv[1].lower(), sys.argv[2].lower())
+    else:
+        print decrypt(sys.argv[1].lower(), sys.argv[2].lower())
