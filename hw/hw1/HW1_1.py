@@ -2,7 +2,8 @@ __author__ = 'jon-bassi'
 
 import sys
 import IndexOfCoincidence
-#import Vignere
+import Vignere
+import ChiSquaredStatistic
 
 
 if len(sys.argv) != 2:
@@ -10,18 +11,18 @@ if len(sys.argv) != 2:
     sys.exit(0)
 
 # find ic of different periods, target is > 0.06
-# cipher text is hogvkiougtbtwlittwkopovsvebsvkiouzwmalwbbslwacav
+# cipher text is hogvkiougtbtwlittwkopovsvebsvkiougtbtwlittwkjbd
 # vptnvffuntshtarptymjwzirappljmhhqvsubwlzzygvtyitarptyiougxiuydtgzhhvvmumshwkzgstfmekvmpkswdgbilvjljmglmjfqwioiivknulvvfemioiemojtywdsajtwmtcgluysdsumfbieugmvalvxkjduetukatymvkqzhvqvgvptytjwwldyeevquhlulwpkt
 
 text = sys.argv[1].lower()
-for i in range(2, len(text) / 2):
-    avgIC = 0.0
-    strList = []
-    for letterIdx in range(len(text)):
-        strList.append('')
-        strList[letterIdx % i] += text[letterIdx]
-    for string in strList:
-        avgIC += IndexOfCoincidence.index_coincidence(string)
-    avgIC /= i
-    print ("Size: %2s  %s" % (i, avgIC))
+IndexOfCoincidence.list_all_ic(text)
+keyLength = int(raw_input('key length: '))
 
+periodicList = [''] * keyLength
+for idx in range(len(text)):
+    periodicList[idx % keyLength] += text[idx]
+
+key = ''
+for string in periodicList:
+    key += ChiSquaredStatistic.list_all_cs(string)
+print ('key: %s\ndecrypted text: %s' % (key, Vignere.decrypt(text, key)))
