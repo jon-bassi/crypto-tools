@@ -7,7 +7,7 @@ import ChiSquaredStatistic
 
 
 if len(sys.argv) != 2:
-    print 'error executing IndexOfCoincidence.py\nusage: python HW1_1.py [text]'
+    print 'error executing HW1_1.py\nusage: python HW1_1.py [text]'
     sys.exit(0)
 
 # find ic of different periods, target is > 0.06
