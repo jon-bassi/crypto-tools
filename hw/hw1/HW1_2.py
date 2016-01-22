@@ -5,7 +5,7 @@ import IndexOfCoincidence
 import NGramScore
 import Vignere
 
-
+# need to move these methods somewhere else
 def iterate_key(key, index, letter):
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
     newText = ''

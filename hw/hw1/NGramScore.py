@@ -3,7 +3,7 @@ __author__ = 'jon-bassi'
 import math
 import Vignere
 
-# load files into memory
+# load files into memory - increase load time, decrease runtime
 mono = 'english_monograms'
 bi = 'english_bigrams'
 tri = 'english_trigrams'
