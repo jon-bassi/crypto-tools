@@ -60,7 +60,7 @@ while True:
     #lastBestKey = bestKey
     bestKey = modify_key(key, text)
     print('%s %s' % (bestKey, Vignere.decrypt(text, bestKey)))
-    input = raw_input('press enter to try again or type x to exit')
+    input = raw_input('press enter to try again or type x to exit: ')
     if input == 'x':
         break
     lastBestKey = '0'
