@@ -1,18 +1,4 @@
-# crypto-tools
-encryption/decryption algorithms
-_____________________________________
-
-sources:
-
-    hw1
-    http://practicalcryptography.com/cryptanalysis/stochastic-searching/cryptanalysis-vigenere-cipher/
-    http://practicalcryptography.com/cryptanalysis/stochastic-searching/cryptanalysis-vigenere-cipher-part-2/
-
-___________
-
-legal stuff:
-
-The software included in this repository is licensed under The MIT License (MIT)
+The MIT License (MIT)
 
 Copyright (c) 2016 jon-bassi
 
