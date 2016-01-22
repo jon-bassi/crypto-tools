@@ -4,10 +4,10 @@ import math
 import Vignere
 
 # load files
-mono = 'english_monograms.txt'
-bi = 'english_bigrams.txt'
-tri = 'english_trigrams.txt'
-quad = 'english_quadgrams.txt'
+mono = 'english_monograms'
+bi = 'english_bigrams'
+tri = 'english_trigrams'
+quad = 'english_quadgrams'
 
 
 def calculate_log_score(text, option):
