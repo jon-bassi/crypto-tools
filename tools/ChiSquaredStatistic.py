@@ -42,6 +42,7 @@ def list_all_cs(text):
         print ('key %2s  %s %10.4f' % (i, decrypted, chi_squared(decrypted)))
     return alphabet[int(raw_input('key choice: '))]
 
+
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print 'error executing ChiSquaredStatistic.py\nusage: python ChiSquaredStatistic.py [text]'

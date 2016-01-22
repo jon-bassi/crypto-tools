@@ -41,6 +41,7 @@ def list_all_ic(text):
         avgIC /= i
         print ("Size: %2s  %s" % (i, avgIC))
 
+
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print 'error executing IndexOfCoincidence.py\nusage: python IndexOfCoincidence.py [text]'
