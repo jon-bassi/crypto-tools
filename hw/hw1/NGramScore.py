@@ -1,5 +1,6 @@
 __author__ = 'jon-bassi'
 
+import sys
 import math
 import Vignere
 
@@ -37,7 +38,14 @@ for line in file(quad):
     quadgrams[key.lower()] = float(score)
     qN += float(score)
 
+
 def calculate_log_score(text, option):
+    '''
+    calculates the log score of the undecrypted text, using mongram -> quadgram statistics
+    :param text:
+    :param option:
+    :return:
+    '''
     ngrams = {}
     ngrams_list = []
     n = 0
@@ -73,6 +81,53 @@ def calculate_log_score(text, option):
     return logScore
 
 
-def score(key, cipherText, option):
-    decipheredText = Vignere.decrypt(cipherText, key)
-    return calculate_log_score(decipheredText, option)
+def iterate_key(key, index, letter):
+    '''
+    increment the given index of the key by one letter
+    :param key:
+    :param index:
+    :param letter:
+    :return:
+    '''
+    alphabet = 'abcdefghijklmnopqrstuvwxyz'
+    newText = ''
+    for idx in range(len(key)):
+        if idx != index:
+            newText += key[idx]
+        else:
+            newText += alphabet[letter]
+    return newText
+
+
+def find_best_key(key, cipherText):
+    '''
+    finds the best scoring key by modifying the key one letter at a time and calculating the log score
+    :param key:
+    :param cipherText:
+    :return:
+    '''
+    bestKey = key
+    bestScore = float(calculate_log_score(Vignere.decrypt(cipherText, key), 4))
+    score = -1
+    for index in range(0, len(key)):
+        for letter in range(0, 26):
+            key = iterate_key(key, index, letter)
+            score = float(calculate_log_score(Vignere.decrypt(cipherText, key), 4))
+            if score > bestScore:
+                bestScore = score
+                bestKey = key
+            print ("%s\t%s\t%s" % (key, score, Vignere.decrypt(cipherText,key)))
+        key = bestKey
+    return bestKey
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print 'error executing NGramScore.py\nusage: python NGramScore.py [text]'
+        sys.exit(0)
+    text = sys.argv[1]
+    while True:
+        bestKey = find_best_key(key, text)
+        print('%s %s' % (bestKey, Vignere.decrypt(text, bestKey)))
+        input = raw_input('press enter to try again or type x to exit: ')
+        if input == 'x':
+            break
