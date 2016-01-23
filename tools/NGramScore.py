@@ -5,10 +5,10 @@ import math
 import Vignere
 
 # load files into memory - increase load time, decrease runtime
-mono = 'english_monograms'
-bi = 'english_bigrams'
-tri = 'english_trigrams'
-quad = 'english_quadgrams'
+mono = 'ngram_data/english_monograms'
+bi = 'ngram_data/english_bigrams'
+tri = 'ngram_data/english_trigrams'
+quad = 'ngram_data/english_quadgrams'
 
 monograms = {}
 mN = 0.0
