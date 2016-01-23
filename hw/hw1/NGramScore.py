@@ -121,13 +121,21 @@ def find_best_key(key, cipherText):
     return bestKey
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print 'error executing NGramScore.py\nusage: python NGramScore.py [text]'
+    if len(sys.argv) != 3:
+        print 'error executing NGramScore.py\nusage: python NGramScore.py [text] [key size]'
         sys.exit(0)
     text = sys.argv[1]
+
+    keySize = int(sys.argv[2])
+    key = ''
+    # could make this a random key
+    for i in range(0, keySize):
+        key += 'a'
+
     while True:
         bestKey = find_best_key(key, text)
         print('%s %s' % (bestKey, Vignere.decrypt(text, bestKey)))
         input = raw_input('press enter to try again or type x to exit: ')
         if input == 'x':
             break
+        key = bestKey
